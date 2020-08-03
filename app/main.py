@@ -5,4 +5,4 @@ app = Flask(__name__)
   
 @app.route("/") 
 def home_view():
-        return code.startx()
+        return "<h1></h1>"
