@@ -5,7 +5,7 @@ def startx():
     sheet_name = ""
     list =[]
     try:
-        workbook_master_data_tool = xlrd.open_workbook(r'../Master_data.xlsm')
+        workbook_master_data_tool = xlrd.open_workbook(r'Master_data.xlsm')
     except Exception as e:
         logging.error("please check file names and directories:")
         logging.error("Master_data.xlsx")
