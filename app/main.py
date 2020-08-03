@@ -1,8 +1,8 @@
-from app.code import startx
+from app.code import startx,temp
 from flask import Flask
   
 app = Flask(__name__) 
   
 @app.route("/") 
 def home_view():
-        return "<h1>"+code.startx()+"</h1>"
+        return "<h1>"+temp+"/h1>"
