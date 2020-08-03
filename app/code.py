@@ -26,8 +26,7 @@ def startx():
         logging.error("please do not keep timesheet open")
         logging.error("please check file names and directories:")
         logging.error("C:\Finance Vision\Master_data.xlsx")
-
-       
+     
     return list;
- temp=startx()
+temp=startx()
  
