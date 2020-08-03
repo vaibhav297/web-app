@@ -28,5 +28,5 @@ def startx():
         logging.error("C:\Finance Vision\Master_data.xlsx")
      
     return list;
-temp=startx()
+startx()
  
