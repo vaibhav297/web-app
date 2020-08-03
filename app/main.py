@@ -1,4 +1,4 @@
-from app.code import startx,temp
+from app.code import startx
 from flask import Flask
   
 app = Flask(__name__) 
