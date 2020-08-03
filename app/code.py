@@ -11,7 +11,7 @@ def startx():
         logging.error("Master_data.xlsx")
     try:
         for master_data in workbook_master_data_tool.sheets():
-            if (master_data.name.lower()).startswith("Dashboard".lower()):
+            if (master_data.name.lower()).startswith("DashBoard".lower()):
                 master_data_sheet_name = master_data.name
         master_data_sheet = workbook_master_data_tool.sheet_by_name(master_data_sheet_name)
         for row_num1 in range(master_data_sheet.nrows):
