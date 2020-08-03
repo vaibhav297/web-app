@@ -33,8 +33,6 @@ def startx():
         logging.error("please check file names and directories:")
         logging.error("C:\Finance Vision\Master_data.xlsx")
 
-        a = input('Press a key to exit')
-        if a:
-            exit(0)
+       
     return ;
 temp = startx()
