@@ -10,5 +10,5 @@ def home_view():
 
 @app.route("/DashBoard")
 def dashboard():
-    return render_template("DashBoard.html",temp)
+    return render_template("DashBoard.html",temp= temp)
 
