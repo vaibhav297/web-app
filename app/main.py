@@ -1,5 +1,6 @@
-from app.code import startx,temp, render_template
-from flask import Flask
+from app.code import startx,temp
+
+from flask import Flask, render_template
   
 app = Flask(__name__) 
   
