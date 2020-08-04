@@ -12,17 +12,14 @@
   <body>
     <h1> About Finance vision -Dashboard </h1>
     <table style="width:100%">
-      {% for x in range(0,len(temp)) %}  
-        {% if x ==0 %}
+      {% for x in temp %}
         <tr>
-          {% for y in range(0,len(temp[x])) %}
-            row_val = temp[x]
+          {% for y in x %}
             {% if y != ""%}
-              <th>​{{row_val[y]}}</th>
+              <th>​{{y}}</th>
             {% endif %}
           {% endfor %}
         </tr>
-        {% endif %}        
     ​{% endfor %}
     </table>
     
