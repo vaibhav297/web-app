@@ -12,22 +12,16 @@
   <body>
     <h1> About Finance vision -Dashboard </h1>
     <table style="width:100%">
-      {% for x in temp %}
-      <tr>
+      {% for x in temp %}  
         {% if x ==0 %}
+        <tr>
           {% for y in x %}
             {% if y != ""%}
               <th>​{{y}}</th>
             {% endif %}
           {% endfor %}
-        {% endif %}
-
-      </tr>  
-      <li>
-        {% for z in x %}
-          ​{{z}}
-        {% endfor %}
-      </li>    
+        </tr>
+        {% endif %}        
     ​{% endfor %}
     </table>
     
