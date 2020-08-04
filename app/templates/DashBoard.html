@@ -7,9 +7,19 @@
   <body>
     <h1> About Finance vision -Dashboard </h1>
     {% for x in temp %}
+      <tr>
+        {% if x ==0 %}
+          {% for y in x %}
+            {% if y != ""%}
+              <th>​{{y}}</th>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+      </tr>  
       <li>
-        {% for y in x %}
-          ​{{y}}
+        {% for z in x %}
+          ​{{z}}
         {% endfor %}
       </li>    
     ​{% endfor %}
