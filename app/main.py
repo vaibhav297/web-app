@@ -7,6 +7,8 @@ app = Flask(__name__)
 @app.route("/") 
 def home_view():
         return render_template("home.html")
+
 @app.route("/DashBoard")
 def dashboard():
-    return "<p>"+str(temp)+"</p>"
+    return render_template("DashBoard.html",temp)
+
