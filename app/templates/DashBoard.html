@@ -2,11 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
     <title>Finance Vision-Dashboard</title>
   </head>
   <body>
     <h1> About Finance vision -Dashboard </h1>
-    {% for x in temp %}
+    <table style="width:100%">
+      {% for x in temp %}
       <tr>
         {% if x ==0 %}
           {% for y in x %}
@@ -23,5 +29,7 @@
         {% endfor %}
       </li>    
     ​{% endfor %}
+    </table>
+    
   </body>
 </html>
