@@ -11,16 +11,60 @@
   </head>
   <body>
     <h1> About Finance vision -Dashboard </h1>
+
     <table style="width:100%">
-      {% for x in temp %}
+      {% for x in range(0,len1) %}
         <tr>
-          {% for y in x %}
-            {% if y != ""%}
-              <th>​{{y}}</th>
+          {% for y in range(0,len2) %}
+            {% if temp[x][y] !=''%}
+
+              {%if x==0 %}
+                {% if temp[x][y] == "PAG" or temp[x][y] == "Project"%}
+                  <th rowspan="3">​{{temp[x][y]}}</th>    
+                {%endif%}
+                {% set v_global = [] %}
+                {% if "'" in temp[x][y] %}
+                                
+                  {% for z in range(0,len_mth) %}
+                    {% if mth_list[z]== temp[x][y] %}
+                      <th></th>
+                      <th colspan={{week_list[z]}}>{{temp[x][y]}}</th>
+                      {% if week_list[z]|string|length %}
+                        {% if v_global.append(week_list[z]) %}{% endif %}  
+                      {%endif%}  
+                    {%endif%}
+                  {%endfor%}
+                {% endif %} 
+              {% elif x==1 %}
+              {%if temp[x][y]!=""%}
+                {% if temp[x][y]=="Forcast" %}
+                  <th rowspan="2"></th>
+                  <th rowspan="2">{{temp[x][y]}}</th> 
+                {% elif temp[x][y]=="Actual"%}
+                  <th colspan={{another}}>Actual</th>
+                {%else%} 
+                  <th>{{temp[x][y]}}</th>
+                {%endif%}
+              {%endif%}
+              {% elif x==2 %}
+                {%if temp[x][y]!=""%}
+                      
+                  <th>{{temp[x][y]}}</th>
+                {%endif%}
+              {% else %}
+                <td>{{temp[x][y]}}</td>
+              {% endif %}
+            {%else%}
+              {%if x>2%}
+                <td>{{temp[x][y]}}</td>
+              {%endif%}
             {% endif %}
+
           {% endfor %}
         </tr>
     ​{% endfor %}
+      <tr>{{len1}}</tr>
+      <tr>{{len2}}</tr>
     </table>
     
   </body>
