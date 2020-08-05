@@ -12,7 +12,8 @@
   <body>
     <h1> About Finance vision -Dashboard </h1>
 
-    <table style="width:100%">
+    <table style="width:50%">
+      {% set counter = namespace(value=0) %}
       {% for x in range(0,len2) %}
         <tr>
           {% for y in range(0,len1) %}
@@ -23,25 +24,27 @@
                   <th rowspan="3">​{{temp[x][y]}}</th>    
                 {%endif%}
                 {% set v_global = [] %}
-                {% if "'" in temp[x][y] %}
-                                
+                {% if "'" in temp[x][y] %}                               
                   {% for z in range(0,len_mth) %}
                     {% if mth_list[z]== temp[x][y] %}
                       <th></th>
                       <th colspan={{week_list[z]}}>{{temp[x][y]}}</th>
-                      {% if week_list[z]|string|length %}
+                      {% if (week_list[z]|string)|length %}
                         {% if v_global.append(week_list[z]) %}{% endif %}  
                       {%endif%}  
                     {%endif%}
                   {%endfor%}
                 {% endif %} 
+
               {% elif x==1 %}
               {%if temp[x][y]!=""%}
+
                 {% if temp[x][y]=="Forcast" %}
                   <th rowspan="2"></th>
                   <th rowspan="2">{{temp[x][y]}}</th> 
                 {% elif temp[x][y]=="Actual"%}
-                  <th colspan="7">Actual</th>
+                  <th colspan={{actual_list[counter.value]}}>Actual</th>
+                  {% set counter.value = counter.value + 1 %}
                 {%else%} 
                   <th>{{temp[x][y]}}</th>
                 {%endif%}

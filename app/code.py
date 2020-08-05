@@ -89,6 +89,7 @@ month_idx = []
 month_val =[]
 
 week_list = []
+actual_list =[]
 len_mth=len(mth_list)
 for x in range(len(mth_list)):
     month,year = mth_list[x].split("'")
@@ -96,4 +97,6 @@ for x in range(len(mth_list)):
     date = month+"-"+year
     week = find_week(date)
     total =int(week) + 4
+    total_actual = int(week)+3
     week_list.append(total)
+    actual_list.append(total_actual)
