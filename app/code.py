@@ -9,10 +9,7 @@ try:
 except Exception as e:
     logging.error("please check file names and directories:")
     logging.error("../Master_data.xlsx")
-try:
-    workbook_pcb = xlrd.open_workbook(r'PCB Calendar_22-Jun-2020 11_50_05.xlsx')
-except Exception as e:
-    print("please keep the PCB Calendar_22-Jun-2020 11_50_05.xlsx at C:\Vacation ")
+
 try:
     def days_between(start_datee, end_date):
         start_datee = datetime.strptime(start_datee, "%d-%m-%Y")
@@ -23,7 +20,7 @@ except Exception as e:
 try:
     def find_week(date):
         try:
-            pcb_sheet = workbook_pcb.sheet_by_name('PCB Calendar_22-Jun-2020 11_50_')
+            pcb_sheet = workbook_master_data_tool.sheet_by_name('PCB Calendar')
         except Exception as e:
             print("please check the pcb worksheet with name PCB Calendar_22-Jun-2020 11_50_ is present in PCB Calendar_22-Jun-2020 11_50_05.xlsx")
 
