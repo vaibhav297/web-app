@@ -3,6 +3,36 @@
   <head>
     <meta charset="utf-8">
     <style>
+      th.pag{
+        background-color: #548235;
+      }
+      th.project,td.blue{
+        background-color: #8EA9DB;
+      }
+      th.month{
+        background-color: #BDD7EE;
+      }
+      th.actual ,td.michelin-na-legacy{
+        background-color: #F8CBAD;
+      }
+      th.forecast,td.michelin-france{
+        background-color: #C6E0B4;
+      }
+      td.alstom{
+        background-color: #D9E1F2;
+      }
+      td.michelin-na-non-engage{
+        background-color: #E2EFDA;
+      }
+      td.michelin-france-pool{
+        background-color: #FCE4D6;
+      }
+      td.mars{
+        background-color: #EDEDED;
+      }
+      table {
+        border-collapse: collapse;
+      }
       table, th, td {
         border: 1px solid black;
       }
@@ -21,14 +51,18 @@
 
               {%if x==0 %}
                 {% if temp[x][y] == "PAG" or temp[x][y] == "Project"%}
-                  <th rowspan="3">​{{temp[x][y]}}</th>    
+                   {%if temp[x][y]=="PAG"%}
+                    <th rowspan="3" class ="pag">​{{temp[x][y]}}</th>
+                   {%else%}
+                    <th rowspan="3" class ="project">​{{temp[x][y]}}</th>
+                   {%endif%}
                 {%endif%}
                 {% set v_global = [] %}
                 {% if "'" in temp[x][y] %}                               
                   {% for z in range(0,len_mth) %}
                     {% if mth_list[z]== temp[x][y] %}
                       <th></th>
-                      <th colspan={{week_list[z]}}>{{temp[x][y]}}</th>
+                      <th colspan={{week_list[z]}} class="month">{{temp[x][y]}}</th>
                       {% if (week_list[z]|string)|length %}
                         {% if v_global.append(week_list[z]) %}{% endif %}  
                       {%endif%}  
@@ -41,9 +75,9 @@
 
                 {% if temp[x][y]=="Forcast" %}
                   <th rowspan="2"></th>
-                  <th rowspan="2">{{temp[x][y]}}</th> 
+                  <th rowspan="2" class="forecast">{{temp[x][y]}}</th> 
                 {% elif temp[x][y]=="Actual"%}
-                  <th colspan={{actual_list[counter.value]}}>Actual</th>
+                  <th colspan={{actual_list[counter.value]}} class="actual">Actual</th>
                   {% set counter.value = counter.value + 1 %}
                 {%else%} 
                   <th>{{temp[x][y]}}</th>
@@ -52,24 +86,60 @@
               {% elif x==2 %}
                 {%if temp[x][y]!=""%}
                       
-                  <th>{{temp[x][y]}}</th>
+                  <th class="actual">{{temp[x][y]}}</th>
                 {%endif%}
+              
+              {%elif temp[x][y]=="ALSTOM"%}
+                <td class="alstom">{{temp[x][y]}}</td>
               {%elif temp[x][y]=="Michelin-France"%}
-                <td rowspan="4">{{temp[x][y]}}</td>
+                <td rowspan="4" class="michelin-france">{{temp[x][y]}}</td>
                 {%elif temp[x][y]=="Michelin-NA-Engage" or temp[x][y]=="Michelin-NA-Legacy" %}
-                <td rowspan="7">{{temp[x][y]}}</td>
+                 {%if temp[x][y]=="Michelin-NA-Engage"%}
+                  <td rowspan="7" class="blue">{{temp[x][y]}}</td>
+                 {%else%}
+                  <td rowspan="7" class="michelin-na-legacy">{{temp[x][y]}}</td>
+                 {%endif%}
                 {%elif temp[x][y] == "Michelin-NA-Non-Engage" %}
-                <td rowspan="3">{{temp[x][y]}}</td>
+                <td rowspan="3" class="michelin-na-non-engage">{{temp[x][y]}}</td>
                 {%elif temp[x][y] == "Michelin-France-Pool"%}
-                <td rowspan="2">{{temp[x][y]}}</td>
+                <td rowspan="2" class="michelin-france-pool">{{temp[x][y]}}</td>
 
               {% else %}
-                <td>{{temp[x][y]}}</td>
+                {%if x==3%}
+                <td class="alstom">{{temp[x][y]}}</td>
+                {%elif x>3 and x <=7 %}
+                  <td class="michelin-france">{{temp[x][y]}}</td>
+                {%elif x>=8 and x <=14%}
+                  <td class="blue">{{temp[x][y]}}</td>
+                {%elif x>14 and x<=21%}
+                  <td class="michelin-na-legacy">{{temp[x][y]}}</td>
+                {%elif x>21 and x<=24%}
+                  <td class="michelin-na-non-engage">{{temp[x][y]}}</td>
+                {%elif x>24 and x<=26%}
+                  <td class="michelin-france-pool">{{temp[x][y]}}</td>
+                {%else%}
+                  <td class="mars">{{temp[x][y]}}</td>
+                {%endif%}
+                
               {% endif %}
             {%else%}
               {%if x>2%}
                 {%if y>0%}
-                 <td>{{temp[x][y]}}</td>
+                {%if x==3%}
+                <td class="alstom">{{temp[x][y]}}</td>
+                {%elif x>3 and x <=7 %}
+                  <td class="michelin-france">{{temp[x][y]}}</td>
+                {%elif x>=8 and x <=14%}
+                  <td class="blue">{{temp[x][y]}}</td>
+                {%elif x>14 and x<=21%}
+                  <td class="michelin-na-legacy">{{temp[x][y]}}</td>
+                {%elif x>21 and x<=24%}
+                  <td class="michelin-na-non-engage">{{temp[x][y]}}</td>
+                {%elif x>24 and x<=26%}
+                  <td class="michelin-france-pool">{{temp[x][y]}}</td>
+                {%else%}
+                  <td class="mars">{{temp[x][y]}}</td>
+                {%endif%}
                  {%endif%}
               {%endif%}
             {% endif %}
