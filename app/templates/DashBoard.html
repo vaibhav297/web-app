@@ -54,15 +54,25 @@
                       
                   <th>{{temp[x][y]}}</th>
                 {%endif%}
+              {%elif temp[x][y]=="Michelin-France"%}
+                <td rowspan="4">{{temp[x][y]}}</td>
+                {%elif temp[x][y]=="Michelin-NA-Engage" or temp[x][y]=="Michelin-NA-Legacy" %}
+                <td rowspan="7">{{temp[x][y]}}</td>
+                {%elif temp[x][y] == "Michelin-NA-Non-Engage" %}
+                <td rowspan="3">{{temp[x][y]}}</td>
+                {%elif temp[x][y] == "Michelin-France-Pool"%}
+                <td rowspan="2">{{temp[x][y]}}</td>
+
               {% else %}
                 <td>{{temp[x][y]}}</td>
               {% endif %}
             {%else%}
               {%if x>2%}
-                <td>{{temp[x][y]}}</td>
+                {%if y>0%}
+                 <td>{{temp[x][y]}}</td>
+                 {%endif%}
               {%endif%}
             {% endif %}
-
           {% endfor %}
         </tr>
     ​{% endfor %}
