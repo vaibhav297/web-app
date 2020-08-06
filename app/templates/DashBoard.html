@@ -12,6 +12,9 @@
       th.month{
         background-color: #BDD7EE;
       }
+      td.total{
+        background-color: yellow;
+      }
       th.actual ,td.michelin-na-legacy{
         background-color: #F8CBAD;
       }
@@ -73,9 +76,11 @@
               {% elif x==1 %}
               {%if temp[x][y]!=""%}
 
-                {% if temp[x][y]=="Forcast" %}
+                {% if temp[x][y]=="Forecast" %}
                   <th rowspan="2"></th>
                   <th rowspan="2" class="forecast">{{temp[x][y]}}</th> 
+                  {% elif temp[x][y]=="Forecast Cost"%}
+                    <th rowspan="2" class="forecast">{{temp[x][y]}}</th>
                 {% elif temp[x][y]=="Actual"%}
                   <th colspan={{actual_list[counter.value]}} class="actual">Actual</th>
                   {% set counter.value = counter.value + 1 %}
@@ -90,35 +95,40 @@
                 {%endif%}
               
               {%elif temp[x][y]=="ALSTOM"%}
-                <td class="alstom">{{temp[x][y]}}</td>
+                <td class="alstom" rowspan="2">{{temp[x][y]}}</td>
               {%elif temp[x][y]=="Michelin-France"%}
-                <td rowspan="4" class="michelin-france">{{temp[x][y]}}</td>
+                <td rowspan="5" class="michelin-france">{{temp[x][y]}}</td>
                 {%elif temp[x][y]=="Michelin-NA-Engage" or temp[x][y]=="Michelin-NA-Legacy" %}
                  {%if temp[x][y]=="Michelin-NA-Engage"%}
-                  <td rowspan="7" class="blue">{{temp[x][y]}}</td>
+                  <td rowspan="8" class="blue">{{temp[x][y]}}</td>
                  {%else%}
-                  <td rowspan="7" class="michelin-na-legacy">{{temp[x][y]}}</td>
+                  <td rowspan="8" class="michelin-na-legacy">{{temp[x][y]}}</td>
                  {%endif%}
                 {%elif temp[x][y] == "Michelin-NA-Non-Engage" %}
-                <td rowspan="3" class="michelin-na-non-engage">{{temp[x][y]}}</td>
+                <td rowspan="4" class="michelin-na-non-engage">{{temp[x][y]}}</td>
                 {%elif temp[x][y] == "Michelin-France-Pool"%}
-                <td rowspan="2" class="michelin-france-pool">{{temp[x][y]}}</td>
+                <td rowspan="3" class="michelin-france-pool">{{temp[x][y]}}</td>
+                {%elif temp[x][y] == "MARS"%}
+                <td rowspan="2" class="mars">{{temp[x][y]}}</td>
 
               {% else %}
                 {%if x==3%}
                 <td class="alstom">{{temp[x][y]}}</td>
-                {%elif x>3 and x <=7 %}
+                {%elif x>4 and x <=8 %}
                   <td class="michelin-france">{{temp[x][y]}}</td>
-                {%elif x>=8 and x <=14%}
+                
+                {%elif x>9 and x <=16%}
                   <td class="blue">{{temp[x][y]}}</td>
-                {%elif x>14 and x<=21%}
+                {%elif x>17 and x<=24%}
                   <td class="michelin-na-legacy">{{temp[x][y]}}</td>
-                {%elif x>21 and x<=24%}
+                {%elif x>25 and x<=28%}
                   <td class="michelin-na-non-engage">{{temp[x][y]}}</td>
-                {%elif x>24 and x<=26%}
+                {%elif x>29 and x<=31%}
                   <td class="michelin-france-pool">{{temp[x][y]}}</td>
-                {%else%}
+                  {%elif x==33%}
                   <td class="mars">{{temp[x][y]}}</td>
+                {%else%}
+                  <td class="total">{{temp[x][y]}}</td>
                 {%endif%}
                 
               {% endif %}
@@ -127,18 +137,21 @@
                 {%if y>0%}
                 {%if x==3%}
                 <td class="alstom">{{temp[x][y]}}</td>
-                {%elif x>3 and x <=7 %}
+                {%elif x>4 and x <=8 %}
                   <td class="michelin-france">{{temp[x][y]}}</td>
-                {%elif x>=8 and x <=14%}
+                
+                {%elif x>9 and x <=16%}
                   <td class="blue">{{temp[x][y]}}</td>
-                {%elif x>14 and x<=21%}
+                {%elif x>17 and x<=24%}
                   <td class="michelin-na-legacy">{{temp[x][y]}}</td>
-                {%elif x>21 and x<=24%}
+                {%elif x>25 and x<=28%}
                   <td class="michelin-na-non-engage">{{temp[x][y]}}</td>
-                {%elif x>24 and x<=26%}
+                {%elif x>29 and x<=31%}
                   <td class="michelin-france-pool">{{temp[x][y]}}</td>
-                {%else%}
+                  {%elif x==33%}
                   <td class="mars">{{temp[x][y]}}</td>
+                {%else%}
+                  <td class="total">{{temp[x][y]}}</td>
                 {%endif%}
                  {%endif%}
               {%endif%}

@@ -96,7 +96,7 @@ for x in range(len(mth_list)):
     year = datetime.strptime(year, "%Y").strftime("%y")
     date = month+"-"+year
     week = find_week(date)
-    total =int(week) + 4
+    total =int(week) + 5
     total_actual = int(week)+3
     week_list.append(total)
     actual_list.append(total_actual)
