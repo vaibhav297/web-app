@@ -1,5 +1,5 @@
 gunicorn==19.9.0
-Flask==1.1.1
+Flask==2.2.5
 openpyxl==3.0.4
 xlrd == 1.2.0
 datetime == 4.3
